@@ -1,5 +1,7 @@
 import java.util.Scanner;
 
+import SinglyLinkedList.ListNode;
+
 public class Ssl {
 	private Node head;
 	private static class Node {
@@ -26,15 +28,16 @@ public class Ssl {
 		int value = sc.nextInt();
 		Node elem = new Node(value);
 		while(true) {
-			current = current.next;
+			
 			if (current.next==null) {
 				current.next = elem;
 				break;
 			}
+			current = current.next;
 		}
-		elem.next = null;
 		display();
 	}
+	
 	public void display() {
 		Node curr = head;
 		while (curr!=null) {
@@ -47,7 +50,13 @@ public class Ssl {
 	
 	public static void main(String[] args) {
 		Ssl ll = new Ssl();
-		
+		ll.head = new Node(10);
+		Node second = new Node(11);
+		Node third = new Node(12);
+		Node fourth = new Node(13);
+		 ll.head.next = second;
+		 second.next = third;
+		 third.next = fourth;
 		 while(true) {
 			 
 			 	System.out.println("Enter the suitable option : ");
