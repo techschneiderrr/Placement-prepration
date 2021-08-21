@@ -1,7 +1,4 @@
 import java.util.Scanner;
-
-import SinglyLinkedList.ListNode;
-
 public class Ssl {
 	private Node head;
 	private static class Node {
@@ -105,6 +102,17 @@ public class Ssl {
 		}
 		System.out.println("There are total "+counter+" elements in the LinkedList.");
 	}	
+	
+	
+	public void delstart() {
+		if(head==null) System.out.println("empty linked list !");
+		Node del = head;
+		head = head.next;
+		del.next=null;
+		System.out.println("deleted element is : "+ del.data);
+		display();
+	}
+	
 	public static void main(String[] args) {
 		Ssl ll = new Ssl();
 		ll.head = new Node(10);
@@ -117,7 +125,7 @@ public class Ssl {
 		 while(true) {
 			 
 			 	System.out.println("Enter the suitable option : ");
-				System.out.println("1. Create\n2. Add element in the end\n3. Add element in the start\n4. Add element in a certain position");
+				System.out.println("1. Create\n2. Add element in the end\n3. Add element in the start\n4. Add element in a certain position\n5. count\n6. delete from start");
 				Scanner sc = new Scanner(System.in);
 				int opt = sc.nextInt();
 					
@@ -143,6 +151,10 @@ public class Ssl {
 			}
 			case 5: {
 				ll.count();
+				break;
+			}
+			case 6: {
+				ll.delstart();
 				break;
 			}
 			default:
