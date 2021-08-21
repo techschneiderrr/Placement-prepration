@@ -93,7 +93,7 @@ public class Ssl {
 		count();
 	}
 
-	public void count() {
+	public int count() {
 		Node curr = head;
 		int counter = 0;
 		while (curr!=null) {
@@ -101,6 +101,7 @@ public class Ssl {
 			curr = curr.next;
 		}
 		System.out.println("There are total "+counter+" elements in the LinkedList.");
+		return counter;
 	}	
 	
 	
@@ -112,6 +113,49 @@ public class Ssl {
 		System.out.println("deleted element is : "+ del.data);
 		display();
 	}
+	
+	public void delend() {
+		Node del = head;
+		// del is the element before the element to be deleted
+		int n = count();
+		int count = 1;
+		while(count<n-1) {
+			del=del.next;
+			count++;
+		}
+		del.next = null;
+		display();
+	}
+	
+	public void delmid() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the position to be deleted from the linkedList : ");
+		int pos = sc.nextInt();
+		int n = count();
+		if(pos>n||pos<1) {
+			System.out.println("Enter a valid pos !");
+		}
+		else if(pos==n) {
+			delend();
+		}
+		else if (pos==1) {
+			delstart();
+		}
+		else {
+			Node prev = head;    
+			Node curr = head.next;
+			int count=1;
+			while(count<pos-1) {
+				prev=prev.next;
+				curr=curr.next;
+				count++;
+			}
+			prev.next = curr.next;
+			curr.next = null;
+		}
+		display();
+	}
+
 	
 	public static void main(String[] args) {
 		Ssl ll = new Ssl();
@@ -125,7 +169,7 @@ public class Ssl {
 		 while(true) {
 			 
 			 	System.out.println("Enter the suitable option : ");
-				System.out.println("1. Create\n2. Add element in the end\n3. Add element in the start\n4. Add element in a certain position\n5. count\n6. delete from start");
+				System.out.println("1. Create\n2. Add element in the end\n3. Add element in the start\n4. Add element in a certain position\n5. count\n6. delete from start\n7. Delete from end\n8. Delete element from mid");
 				Scanner sc = new Scanner(System.in);
 				int opt = sc.nextInt();
 					
@@ -155,6 +199,14 @@ public class Ssl {
 			}
 			case 6: {
 				ll.delstart();
+				break;
+			}
+			case 7: {
+				ll.delend();
+				break;
+			}
+			case 8:{
+				ll.delmid();
 				break;
 			}
 			default:
