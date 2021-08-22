@@ -155,6 +155,21 @@ public class Ssl {
 		}
 		display();
 	}
+	
+	
+	public void rev() {
+		Node current = head;
+		Node prev = null;
+		Node next = null;
+		while(current!=null) {
+			next = current.next;
+			current.next = prev;
+			prev = current;
+			current = next;
+		}
+		head = prev;
+		display();
+	}
 
 	
 	public static void main(String[] args) {
@@ -169,7 +184,10 @@ public class Ssl {
 		 while(true) {
 			 
 			 	System.out.println("Enter the suitable option : ");
-				System.out.println("1. Create\n2. Add element in the end\n3. Add element in the start\n4. Add element in a certain position\n5. count\n6. delete from start\n7. Delete from end\n8. Delete element from mid");
+				System.out.println("1. Create\n2. Add element in the end\n3. "
+						+ "Add element in the start\n4. Add element in a certain "
+						+ "position\n5. count\n6. delete from start\n7. Delete from "
+						+ "end\n8. Delete element from mid\n9. Reverse");
 				Scanner sc = new Scanner(System.in);
 				int opt = sc.nextInt();
 					
@@ -207,6 +225,10 @@ public class Ssl {
 			}
 			case 8:{
 				ll.delmid();
+				break;
+			}
+			case 9:{
+				ll.rev();
 				break;
 			}
 			default:
